@@ -43,15 +43,6 @@ class Users extends Authenticatable implements JWTSubject
         'emailVerificationTokenExpiresAt' => 'datetime',
     ];
 
-    public function app_roleid(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Roles::class, 'app_roleid');
-    }
-    public function cooperativadetaxiid(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Cooperativadetaxis::class, 'cooperativadetaxiid');
-    }
-
     public function avatar()
     {
         return $this->morphMany(Files::class, 'belongsTo')->where('belongsTo_column', '=', 'avatar');

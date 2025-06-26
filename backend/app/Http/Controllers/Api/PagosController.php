@@ -7,31 +7,33 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use App\Repositories\RolesRepositoryInterface;
+use App\Repositories\PagosRepositoryInterface;
 
-class RolesController extends Controller
+class PagosController extends Controller
 {
-    protected RolesRepositoryInterface $rolesRepository;
+    protected PagosRepositoryInterface $pagosRepository;
     protected Request $request;
 
-    public function __construct(RolesRepositoryInterface $rolesRepository, Request $request)
+    public function __construct(PagosRepositoryInterface $pagosRepository, Request $request)
     {
-        $this->rolesRepository = $rolesRepository;
+        $this->pagosRepository = $pagosRepository;
         $this->request = $request;
     }
 
     public function index()
     {
-        $payload = $this->rolesRepository->findAll($this->request->all());
+        $payload = $this->pagosRepository->findAll($this->request->all());
 
         $fileType = request()->query('filetype');
         if($fileType && $fileType == 'csv') {
             header("Content-type: text/csv");
             header("Cache-Control: no-store, no-cache");
-            header('Content-Disposition: attachment; filename="roles.csv"');
+            header('Content-Disposition: attachment; filename="pagos.csv"');
             $rows = $payload['rows'];
-            $fields = array('id','id_rol','nombre',
+            $fields = array('id','id_pago','id_servicio',
 
+        'monto',
+      'fecha_pago',
         );
 
             $f = fopen('php://output', 'w');
@@ -40,8 +42,10 @@ class RolesController extends Controller
 
             foreach($rows as $row)
                 {
-                    fputcsv($f, array($row['id'],$row['id_rol'],$row['nombre'],
+                    fputcsv($f, array($row['id'],$row['id_pago'],$row['id_servicio'],
 
+        $row['monto'],
+      $row['fecha_pago'],
         ));
                 }
 
@@ -54,7 +58,7 @@ class RolesController extends Controller
 
     public function count()
     {
-        $payload = $this->rolesRepository->findAll($this->request->all());
+        $payload = $this->pagosRepository->findAll($this->request->all());
 
         $countPayload = ['count' => $payload['count']];
         return response()->json($countPayload);
@@ -62,35 +66,35 @@ class RolesController extends Controller
 
     public function show($id)
     {
-        $payload = $this->rolesRepository->findById($id);
+        $payload = $this->pagosRepository->findById($id);
 
         return response()->json($payload);
     }
 
     public function store()
     {
-        $payload = $this->rolesRepository->create($this->request->all(), auth()->user());
+        $payload = $this->pagosRepository->create($this->request->all(), auth()->user());
 
         return response()->json($payload);
     }
 
     public function update($id)
     {
-        $payload = $this->rolesRepository->update($id, $this->request->all(), auth()->user());
+        $payload = $this->pagosRepository->update($id, $this->request->all(), auth()->user());
 
         return response()->json($payload);
     }
 
     public function destroy($id)
     {
-        $this->rolesRepository->destroy($id);
+        $this->pagosRepository->destroy($id);
 
         return response()->json(true, 204);
     }
 
     public function findAllAutocomplete()
     {
-        $payload = $this->rolesRepository->findAllAutocomplete($this->request->only(['query', 'limit']));
+        $payload = $this->pagosRepository->findAllAutocomplete($this->request->only(['query', 'limit']));
 
         return response()->json($payload);
     }

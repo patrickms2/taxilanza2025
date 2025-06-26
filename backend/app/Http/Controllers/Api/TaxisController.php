@@ -30,9 +30,10 @@ class TaxisController extends Controller
             header("Cache-Control: no-store, no-cache");
             header('Content-Disposition: attachment; filename="taxis.csv"');
             $rows = $payload['rows'];
-            $fields = array('id','license_plate','brand','model','color',
-        'year',
+            $fields = array('id','id_taxi','id_taxista','licencia_taxi','tipo','preferencias','matricula','marca','modelo','color',
+        'año','ubicacion_actual',
 
+      'ultima_actualizacion',
         );
 
             $f = fopen('php://output', 'w');
@@ -41,9 +42,10 @@ class TaxisController extends Controller
 
             foreach($rows as $row)
                 {
-                    fputcsv($f, array($row['id'],$row['license_plate'],$row['brand'],$row['model'],$row['color'],
-        $row['year'],
+                    fputcsv($f, array($row['id'],$row['id_taxi'],$row['id_taxista'],$row['licencia_taxi'],$row['tipo'],$row['preferencias'],$row['matricula'],$row['marca'],$row['modelo'],$row['color'],
+        $row['año'],$row['ubicacion_actual'],
 
+      $row['ultima_actualizacion'],
         ));
                 }
 

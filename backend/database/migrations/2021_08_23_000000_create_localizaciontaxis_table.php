@@ -4,22 +4,29 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateLocalizaciontaxisTable extends Migration
 {
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('localizaciontaxis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('created_by_user')->nullable();
             $table->unsignedBigInteger('updated_by_user')->nullable();
             $table->string
 
-("id_rol")->nullable();
+("id_localizacion")->nullable();
             $table->string
 
-("nombre")->nullable();
-            $table->enum
-("estado", ["Activo","Inactivo"],)->nullable();
+("id_taxi")->nullable();
+            $table->string
+
+("latitud")->nullable();
+            $table->string
+
+("longitud")->nullable();
+            $table->timestamp
+
+("ultima_actualizacion")->nullable();
 
             $table->timestamps();
         });
@@ -27,7 +34,7 @@ class CreateRolesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('localizaciontaxis');
     }
 }
 

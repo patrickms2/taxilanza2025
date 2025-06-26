@@ -13,87 +13,75 @@ class AddForeignKeysToTable extends Migration
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
-            $table->unsignedBigInteger('app_roleid')->nullable();
-            $table->foreign('app_roleid')->references('id')->on('roles');
-
-            $table->unsignedBigInteger('cooperativadetaxiid')->nullable();
-            $table->foreign('cooperativadetaxiid')->references('id')->on('cooperativadetaxis');
-
         });
 
-        Schema::table('appointments', function (Blueprint $table) {
-            $table->foreign('created_by_user')->references('id')->on('users');
-            $table->foreign('updated_by_user')->references('id')->on('users');
-
-            $table->unsignedBigInteger('departmentid')->nullable();
-            $table->foreign('departmentid')->references('id')->on('departments');
-
-            $table->unsignedBigInteger('cooperativadetaxiid')->nullable();
-            $table->foreign('cooperativadetaxiid')->references('id')->on('cooperativadetaxis');
-
-        });
-
-        Schema::table('appointmentstaxistasusers', function (Blueprint $table) {
+        Schema::table('carpetas', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
         });
 
-        Schema::table('appointmentsusersusers', function (Blueprint $table) {
+        Schema::table('citas', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
         });
 
-        Schema::table('cooperativadetaxis', function (Blueprint $table) {
+        Schema::table('conductores', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
         });
 
-        Schema::table('departments', function (Blueprint $table) {
+        Schema::table('consultas', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
-            $table->unsignedBigInteger('cooperativadetaxiid')->nullable();
-            $table->foreign('cooperativadetaxiid')->references('id')->on('cooperativadetaxis');
-
         });
 
-        Schema::table('documents', function (Blueprint $table) {
+        Schema::table('controlfichaje', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
-            $table->unsignedBigInteger('creatorid')->nullable();
-            $table->foreign('creatorid')->references('id')->on('users');
-
-            $table->unsignedBigInteger('cooperativadetaxiid')->nullable();
-            $table->foreign('cooperativadetaxiid')->references('id')->on('cooperativadetaxis');
-
         });
 
-        Schema::table('locations', function (Blueprint $table) {
+        Schema::table('controlpermisos', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
-            $table->unsignedBigInteger('taxiid')->nullable();
-            $table->foreign('taxiid')->references('id')->on('taxis');
-
-            $table->unsignedBigInteger('cooperativadetaxiid')->nullable();
-            $table->foreign('cooperativadetaxiid')->references('id')->on('cooperativadetaxis');
-
         });
 
-        Schema::table('payments', function (Blueprint $table) {
+        Schema::table('departamentos', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
-            $table->unsignedBigInteger('serviceid')->nullable();
-            $table->foreign('serviceid')->references('id')->on('services');
+        });
+
+        Schema::table('documentos', function (Blueprint $table) {
+            $table->foreign('created_by_user')->references('id')->on('users');
+            $table->foreign('updated_by_user')->references('id')->on('users');
 
         });
 
-        Schema::table('permissions', function (Blueprint $table) {
+        Schema::table('estadisticas', function (Blueprint $table) {
+            $table->foreign('created_by_user')->references('id')->on('users');
+            $table->foreign('updated_by_user')->references('id')->on('users');
+
+        });
+
+        Schema::table('localizaciontaxis', function (Blueprint $table) {
+            $table->foreign('created_by_user')->references('id')->on('users');
+            $table->foreign('updated_by_user')->references('id')->on('users');
+
+        });
+
+        Schema::table('mensajes', function (Blueprint $table) {
+            $table->foreign('created_by_user')->references('id')->on('users');
+            $table->foreign('updated_by_user')->references('id')->on('users');
+
+        });
+
+        Schema::table('pagos', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
@@ -105,21 +93,9 @@ class AddForeignKeysToTable extends Migration
 
         });
 
-        Schema::table('rolespermissionspermissions', function (Blueprint $table) {
+        Schema::table('servicios', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
-
-        });
-
-        Schema::table('services', function (Blueprint $table) {
-            $table->foreign('created_by_user')->references('id')->on('users');
-            $table->foreign('updated_by_user')->references('id')->on('users');
-
-            $table->unsignedBigInteger('taxistaid')->nullable();
-            $table->foreign('taxistaid')->references('id')->on('users');
-
-            $table->unsignedBigInteger('cooperativadetaxiid')->nullable();
-            $table->foreign('cooperativadetaxiid')->references('id')->on('cooperativadetaxis');
 
         });
 
@@ -127,18 +103,21 @@ class AddForeignKeysToTable extends Migration
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
-            $table->unsignedBigInteger('ownerid')->nullable();
-            $table->foreign('ownerid')->references('id')->on('users');
-
         });
 
-        Schema::table('taxisdriversusers', function (Blueprint $table) {
+        Schema::table('taxistas', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 
         });
 
-        Schema::table('userscustom_permissionspermissions', function (Blueprint $table) {
+        Schema::table('tipos_doc', function (Blueprint $table) {
+            $table->foreign('created_by_user')->references('id')->on('users');
+            $table->foreign('updated_by_user')->references('id')->on('users');
+
+        });
+
+        Schema::table('usuarios', function (Blueprint $table) {
             $table->foreign('created_by_user')->references('id')->on('users');
             $table->foreign('updated_by_user')->references('id')->on('users');
 

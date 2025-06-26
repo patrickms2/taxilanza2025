@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Taxis extends Model {
+class Taxistas extends Model {
     protected static $unguarded = true;
 
 }

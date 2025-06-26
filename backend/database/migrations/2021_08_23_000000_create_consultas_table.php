@@ -4,22 +4,29 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateConsultasTable extends Migration
 {
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('consultas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('created_by_user')->nullable();
             $table->unsignedBigInteger('updated_by_user')->nullable();
             $table->string
 
-("id_rol")->nullable();
+("id_consulta")->nullable();
+            $table->timestamp
+
+("fecha_consulta")->nullable();
             $table->string
 
-("nombre")->nullable();
-            $table->enum
-("estado", ["Activo","Inactivo"],)->nullable();
+("id_taxista")->nullable();
+            $table->string
+
+("id_departamento")->nullable();
+            $table->string
+
+("resultado")->nullable();
 
             $table->timestamps();
         });
@@ -27,7 +34,7 @@ class CreateRolesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('consultas');
     }
 }
 

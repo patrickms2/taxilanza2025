@@ -4,52 +4,42 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTaxisTable extends Migration
+class CreateTaxistasTable extends Migration
 {
     public function up()
     {
-        Schema::create('taxis', function (Blueprint $table) {
+        Schema::create('taxistas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('created_by_user')->nullable();
             $table->unsignedBigInteger('updated_by_user')->nullable();
             $table->string
 
-("id_taxi")->nullable();
-            $table->string
-
 ("id_taxista")->nullable();
             $table->string
 
-("licencia_taxi")->nullable();
+("id_user")->nullable();
             $table->string
 
-("tipo")->nullable();
+("licencia_conducir")->nullable();
             $table->string
 
-("preferencias")->nullable();
+("apellidos")->nullable();
             $table->string
 
-("matricula")->nullable();
-            $table->string
-
-("marca")->nullable();
-            $table->string
-
-("modelo")->nullable();
-            $table->integer
-
-("año")->nullable();
-            $table->string
-
-("color")->nullable();
+("dni")->nullable();
             $table->enum
-("estado", ["Activo","Mantenimiento","Baja"],)->nullable();
-            $table->integer
+("tipo", ["Prop.","Cond."],)->nullable();
+            $table->string
 
-("ubicacion_actual")->nullable();
+("direccion")->nullable();
+            $table->string
+
+("telefono")->nullable();
             $table->timestamp
 
-("ultima_actualizacion")->nullable();
+("fecha_registro")->nullable();
+            $table->enum
+("estado", ["Activo","Inactivo"],)->nullable();
 
             $table->timestamps();
         });
@@ -57,7 +47,7 @@ class CreateTaxisTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('taxis');
+        Schema::dropIfExists('taxistas');
     }
 }
 

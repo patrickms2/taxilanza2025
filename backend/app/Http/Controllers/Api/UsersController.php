@@ -84,9 +84,8 @@ class UsersController extends Controller
             header("Cache-Control: no-store, no-cache");
             header('Content-Disposition: attachment; filename="users.csv"');
             $rows = $payload['rows'];
-            $fields = array('id','First Name','Last Name','Phone Number','E-mail','firstname','lastname','phonenumber','emailverificationtoken','passwordresettoken',
+            $fields = array('id','First Name','Last Name','Phone Number','E-mail',
 
-      'emailverificationtokenexpiresat','passwordresettokenexpiresat',
         );
 
             $f = fopen('php://output', 'w');
@@ -95,9 +94,8 @@ class UsersController extends Controller
 
             foreach($rows as $row)
                 {
-                    fputcsv($f, array($row['id'],$row['firstName'],$row['lastName'],$row['phoneNumber'],$row['email'],$row['firstname'],$row['lastname'],$row['phonenumber'],$row['emailverificationtoken'],$row['passwordresettoken'],
+                    fputcsv($f, array($row['id'],$row['firstName'],$row['lastName'],$row['phoneNumber'],$row['email'],
 
-      $row['emailverificationtokenexpiresat'],$row['passwordresettokenexpiresat'],
         ));
                 }
 

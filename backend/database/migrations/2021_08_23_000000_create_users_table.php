@@ -47,30 +47,6 @@ class CreateUsersTable extends Migration
             $table->string
 
 ("provider")->nullable();
-            $table->string
-
-("firstname")->nullable();
-            $table->string
-
-("lastname")->nullable();
-            $table->string
-
-("phonenumber")->nullable();
-            $table->boolean
-
-("emailverified")->nullable();
-            $table->string
-
-("emailverificationtoken")->nullable();
-            $table->timestamp
-
-("emailverificationtokenexpiresat")->nullable();
-            $table->string
-
-("passwordresettoken")->nullable();
-            $table->timestamp
-
-("passwordresettokenexpiresat")->nullable();
 
             $table->string
 
